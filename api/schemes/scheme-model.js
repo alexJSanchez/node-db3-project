@@ -30,9 +30,10 @@ async function findById(scheme_id) { // EXERCISE B
   const rows = await db('schemes as sc')
   .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')
   .where('sc.scheme_id' , scheme_id)
-  .orderBy('st.step_number')
   .select('st.*','sc.scheme_name','sc.scheme_id')
+  .orderBy('st.step_number')
   
+ 
   const editedData = {
     scheme_id: rows[0].scheme_id,
     scheme_name: rows[0].scheme_name,
